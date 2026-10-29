@@ -1,0 +1,152 @@
+:root {
+  --gold-light: #f8dc9b;
+  --gold: #e2a93d;
+  --text: #f1f3f9;
+  --muted: rgba(241, 243, 249, 0.5);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+  font-family: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(circle at 15% 10%, rgba(88, 101, 242, 0.45), transparent 45%),
+    radial-gradient(circle at 90% 95%, rgba(226, 169, 61, 0.35), transparent 40%),
+    #0a0c13;
+}
+
+/* Frosted glass body */
+.calculator {
+  width: min(100%, 340px);
+  padding: 24px 22px 22px;
+  border-radius: 34px;
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.11), rgba(255, 255, 255, 0.03));
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  backdrop-filter: blur(26px);
+  -webkit-backdrop-filter: blur(26px);
+  box-shadow:
+    0 35px 70px rgba(0, 0, 0, 0.55),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.history {
+  height: 22px;
+  text-align: right;
+  font-size: 14px;
+  letter-spacing: 0.03em;
+  color: var(--muted);
+}
+
+.display {
+  margin-bottom: 20px;
+  padding: 4px 4px 14px;
+  text-align: right;
+  font-size: 54px;
+  font-weight: 300;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.display::-webkit-scrollbar {
+  display: none;
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+button {
+  height: 62px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  font: inherit;
+  font-size: 21px;
+  font-weight: 500;
+  color: var(--text);
+  cursor: pointer;
+  background: linear-gradient(180deg, #2c3142, #1d2130);
+  box-shadow:
+    0 6px 14px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.15);
+  box-shadow:
+    0 10px 20px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.14);
+}
+
+button:active {
+  transform: scale(0.95);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+button:focus-visible {
+  outline: 2px solid var(--gold-light);
+  outline-offset: 3px;
+}
+
+/* Top row: lighter, quieter keys */
+.fn {
+  background: linear-gradient(180deg, #484f66, #343a4f);
+  color: #dfe4f2;
+}
+
+.clear {
+  color: #ff9a8a;
+}
+
+/* Gold operators */
+.operator {
+  font-size: 26px;
+  color: #2b1c00;
+  border-color: rgba(255, 236, 190, 0.5);
+  background: linear-gradient(180deg, var(--gold-light), var(--gold));
+  box-shadow:
+    0 6px 16px rgba(226, 169, 61, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+/* Pearl equals key */
+.equals {
+  font-size: 26px;
+  font-weight: 700;
+  color: #1b1f2e;
+  background: linear-gradient(180deg, #ffffff, #cfd5e6);
+  box-shadow:
+    0 6px 16px rgba(255, 255, 255, 0.18),
+    inset 0 1px 0 #fff;
+}
+
+.zero {
+  grid-column: span 2;
+  text-align: left;
+  padding-left: 28px;
+}
+
+@media (max-width: 360px) {
+  .display { font-size: 44px; }
+  button { height: 56px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  button { transition: none; }
+}
